@@ -1,0 +1,22 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+     function load(){ 
+ 
+}
+    let hostname = location.hostname;
+
+  var socket = io();
+  console.log(hostname)
+
+
+
+
+  function getip(ip){
+    alert('IP Address: ' + ip);
+}
+</script>
+<script type="application/javascript" src="http://localhost:3000?callback=getip" crossorigin="anonymous|use-credentials"/>
+
+</script>
+<body onload = "load()">
+</body>
