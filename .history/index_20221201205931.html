@@ -140,11 +140,10 @@
             var color = stringToColour(autherName);
 
  
+            setColor(color, identifier);
 
             item.appendChild(author);
             messages.appendChild(item);
-
-            setColor(color, identifier);
             window.scrollTo(0, document.body.scrollHeight);
         });
 
@@ -192,8 +191,7 @@
         function setColor(color, id) {
             console.log('setColor', color) 
 
-                  document.getElementById(id).style.color = color;  
-
+                //   document.getElementById(id).style.backgroundColor = color; 
         }
     </script>
 </body>

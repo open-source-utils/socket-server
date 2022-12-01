@@ -63,8 +63,8 @@
             float: left;
             display: inline-block;
             padding: .2em .3em;
-            border: 2px solid blue;
-            /* color: #fff; */
+            background-color: #e25c00;
+            color: #fff;
             font-size: .75rem;
             font-weight: bold;
             margin-right: 10px;
@@ -134,17 +134,9 @@
             var msg = response.msg;
             var identifier = response.identifier;
             item.textContent = msg;
-            author.setAttribute("id", identifier);
-
             author.textContent = '      Author: ' + identifier;
-            var color = stringToColour(autherName);
-
- 
-
             item.appendChild(author);
             messages.appendChild(item);
-
-            setColor(color, identifier);
             window.scrollTo(0, document.body.scrollHeight);
         });
 
@@ -160,8 +152,8 @@
             autherName = localStorage.getItem("author");
             console.log('getAuthorName', autherName);
             if (typeof (autherName) != "undefined" && autherName !== '') {
+                var color = stringToColour();
                 document.getElementById('identifier-value').textContent = autherName;
-
                 document.getElementById('identifier-value').style.display = 'block'; //Will show
                 document.getElementById('identifier').style.display = 'none'; //Will hide
             } else {
@@ -188,12 +180,6 @@
                 colour += ('00' + value.toString(16)).substr(-2);
             }
             return colour;
-        }
-        function setColor(color, id) {
-            console.log('setColor', color) 
-
-                  document.getElementById(id).style.color = color;  
-
         }
     </script>
 </body>
