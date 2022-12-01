@@ -21,9 +21,7 @@ io.on('connection', (socket) => {
 
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
-
-  var remoteAddress = socket.request.connection.remoteAddress 
-    log.append(msg, remoteAddress);
+    log.append(msg));
   });
 
   socket.on('disconnect', function () {

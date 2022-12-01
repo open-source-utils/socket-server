@@ -71,29 +71,26 @@
             border-radius: 5px;
             ;
         }
-
-        #identifier {
+        #identifier{
             text-align: center;
         }
-
-        #identifier-container {
+        #identifier-container{
             text-align: center;
             font-size: large;
-            color: black;
-        }
-
-        .remove-icon {
             color: #e25c00;
         }
+        .identifier-value{
+            
+        co}
     </style>
 </head>
 
 <body onload="getAuthorName()">
-    <div id="identifier-container"> <span id="identifier-value"></span> <span class="remove-icon" onclick="removeAuthor()">x</span></div>
+   <div id="identifier-container"> <span id="identifier-value"></span> <span onclick="removeAuthor()">x</span></div>
     <form name="identifier" id="identifier">
         <fieldset>
             <label for="name">Your Name:</label>
-            <input id="name" name="name" required></input>
+            <input id="name" name="name" required></input> 
             <button onclick="saveAuthorName()">Save</button>
         </fieldset>
     </form>
@@ -139,33 +136,33 @@
             window.scrollTo(0, document.body.scrollHeight);
         });
 
-        function saveAuthorName() {
-            const form = document.querySelector('form[name="identifier"]');
-            const name = form.elements['name'].value;
-            console.log(name);
-            localStorage.setItem("author", name);
+function saveAuthorName() {
+    const form = document.querySelector('form[name="identifier"]');
+    const name = form.elements['name'].value;
+    console.log(name);
+    localStorage.setItem("author", name);
 
-        }
-        var autherName = '';
-        function getAuthorName() {
-            autherName = localStorage.getItem("author");
-            console.log('getAuthorName', autherName);
-            if (typeof (autherName) != "undefined" && autherName !== '') {
-                document.getElementById('identifier-value').textContent = autherName;
-                document.getElementById('identifier-value').style.display = 'block'; //Will show
-                document.getElementById('identifier').style.display = 'none'; //Will hide
-            } else {
-                document.getElementById('identifier-value').style.display = 'none'; //Will show
-                document.getElementById('identifier').style.display = 'block'; //Will hide
-            }
+}
+var autherName = '';
+function getAuthorName() {
+    autherName = localStorage.getItem("author");
+    console.log('getAuthorName',autherName);
+    if(typeof(autherName) != "undefined" && autherName!==''){ 
+        document.getElementById('identifier-value').textContent= autherName;
+    document.getElementById('identifier-value').style.display = 'block'; //Will show
+    document.getElementById('identifier').style.display = 'none'; //Will hide
+    } else { 
+    document.getElementById('identifier-value').style.display = 'none'; //Will show
+    document.getElementById('identifier').style.display = 'block'; //Will hide
+    }
 
-        }
-        function removeAuthor() {
-            localStorage.removeItem("author");
-            autherName = '';
-            document.getElementById('identifier-container').style.display = 'none'; //Will show
-            document.getElementById('identifier').style.display = 'block'; //Will hide
-        }
+}
+function removeAuthor(){
+    localStorage.removeItem("author");
+    autherName = '';
+    document.getElementById('identifier-container').style.display = 'none'; //Will show
+    document.getElementById('identifier').style.display = 'block'; //Will hide
+}
     </script>
 </body>
 

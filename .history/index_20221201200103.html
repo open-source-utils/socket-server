@@ -79,17 +79,17 @@
         #identifier-container {
             text-align: center;
             font-size: large;
-            color: black;
+            color: #e25c00;
         }
 
-        .remove-icon {
-            color: #e25c00;
+        #dentifier-value {
+            color: #333 !important;
         }
     </style>
 </head>
 
 <body onload="getAuthorName()">
-    <div id="identifier-container"> <span id="identifier-value"></span> <span class="remove-icon" onclick="removeAuthor()">x</span></div>
+    <div id="identifier-container"> <span id="identifier-value"></span> <span onclick="removeAuthor()">x</span></div>
     <form name="identifier" id="identifier">
         <fieldset>
             <label for="name">Your Name:</label>

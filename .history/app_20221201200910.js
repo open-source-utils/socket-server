@@ -4,7 +4,7 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const log = require('./log-handler');
+const f = require('./log-handler');
 
  
 app.get('/', (req, res) => {
@@ -21,9 +21,6 @@ io.on('connection', (socket) => {
 
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
-
-  var remoteAddress = socket.request.connection.remoteAddress 
-    log.append(msg, remoteAddress);
   });
 
   socket.on('disconnect', function () {
