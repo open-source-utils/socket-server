@@ -89,9 +89,11 @@
 </head>
 
 <body onload="getAuthorName()">
-    <div id="identifier-container"> <span id="identifier-value"></span> <span class="remove-icon"
-            onclick="removeAuthor()">x</span></div>
-    <form name="identifier" id="identifier">
+    <div id="identifier-container"> 
+        <span id="identifier-value"></span> 
+        <span class="remove-icon" onclick="removeAuthor()">x</span>
+    </div>
+    <form name="identifier-form" id="identifier-form">
         <fieldset>
             <label for="name">Your Name:</label>
             <input id="name" name="name" required></input>
@@ -149,7 +151,7 @@
         });
 
         function saveAuthorName() {
-            const form = document.querySelector('form[name="identifier"]');
+            const form = document.querySelector('form[name="identifier-form"]');
             const name = form.elements['name'].value;
             console.log(name);
             localStorage.setItem("author", name);
@@ -159,22 +161,29 @@
         function getAuthorName() {
             autherName = localStorage.getItem("author");
             console.log('getAuthorName', autherName);
-            if (typeof (autherName) != "undefined" && autherName !== '') {
+            if (typeof (autherName) != "undefined" && autherName != '') {
                 document.getElementById('identifier-value').textContent = autherName;
+                setVisibility('identifier-value', 'block');
+                setVisibility('identifier-form', 'none');
 
-                document.getElementById('identifier-value').style.display = 'block'; //Will show
-                document.getElementById('identifier').style.display = 'none'; //Will hide
+                // document.getElementById('identifier-value').style.display = 'block'; //Will show
+                // document.getElementById("identifier-form").style.display = 'none'; //Will hide
             } else {
-                document.getElementById('identifier-value').style.display = 'none'; //Will show
-                document.getElementById('identifier').style.display = 'block'; //Will hide
+                setVisibility('identifier-value', 'none');
+                setVisibility('identifier-form', 'block');
+
+                // document.getElementById('identifier-value').style.display = 'none';
+                // document.getElementById("identifier-form").style.display = 'block';
             }
 
         }
         function removeAuthor() {
             localStorage.removeItem("author");
             autherName = '';
-            document.getElementById('identifier-container').style.display = 'none'; //Will show
-            document.getElementById('identifier').style.display = 'block'; //Will hide
+            // document.getElementById('identifier-container').style.display = 'none';
+            setVisibility('identifier-container', 'none');
+            setVisibility('identifier-form', 'block');
+            // document.getElementById("identifier-form").style.display = 'block';
         }
 
         var stringToColour = function (str) {
@@ -194,6 +203,10 @@
 
                   document.getElementById(id).style.color = color;  
 
+        }
+
+        function setVisibility(id, value){
+            document.getElementById(id).style.display= value;
         }
     </script>
 </body>
